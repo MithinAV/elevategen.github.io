@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElevateGen - Elevating Communities</title>
+    <meta name="description" content="ElevateGen is dedicated to empowering communities through innovative programs and sustainable solutions.">
+    <meta name="keywords" content="nonprofit, community development, social impact, volunteering">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            background: linear-gradient(135deg, #1e40af, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: #1e40af;
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #60a5fa;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Page Styles */
+        .page {
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-small {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .hero::before,
+        .hero-small::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(30, 64, 175, 0.8), rgba(59, 130, 246, 0.8));
+            z-index: -1;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            font-weight: bold;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .mission-preview,
+        .get-involved,
+        .about-content,
+        .team-content,
+        .contact-content,
+        .values-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #666;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #1e40af;
+        }
+
+        /* Mission Cards */
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card h3 {
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Get Involved Section */
+        .involvement-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* About Page Styles */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .value-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #333;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Team Page Styles */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-photo {
+            margin-bottom: 1.5rem;
+        }
+
+        .photo-placeholder {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .role {
+            color: #3b82f6;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Page Styles */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item h3 {
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.8);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        .submit-btn {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            background: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            border: 4px solid rgba(59, 130, 246, 0.3);
+            border-left: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.9);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .mission-cards,
+            .value-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .involvement-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cta-button {
+                margin: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .project-card,
+            .value-card,
+            .team-member {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1 class="logo" onclick="showPage('home')">ElevateGen</h1>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <div id="home-page" class="page">
+            <section class="hero" id="home">
+                <div class="hero-content">
+                    <h2>Welcome to ElevateGen</h2>
+                    <p>Elevating communities through innovative nonprofit solutions</p>
+                    <a href="#about" class="cta-button" onclick="showPage('about')">Learn More</a>
+                    <a href="#contact" class="cta-button" onclick="showPage('contact')">Get Involved</a>
+                </div>
+            </section>
+
+            <section class="mission-preview" id="mission">
+                <div class="container">
+                    <h2>Our Mission</h2>
+                    <p class="section-intro">ElevateGen is dedicated to empowering communities through innovative programs and sustainable solutions. We believe in creating positive change through collaboration and community-driven initiatives.</p>
+                    <div class="mission-cards">
+                        <div class="project-card fade-in">
+                            <h3>Community Empowerment</h3>
+                            <p>Building stronger communities through education, resources, and support systems that create lasting change.</p>
+                            <a href="#about" class="cta-button" onclick="showPage('about')">Learn More</a>
+                        </div>
+                        <div class="project-card fade-in">
+                            <h3>Sustainable Solutions</h3>
+                            <p>Developing long-term strategies that create lasting positive impact for generations to come.</p>
+                            <a href="#about" class="cta-button" onclick="showPage('about')">Learn More</a>
+                        </div>
+                        <div class="project-card fade-in">
+                            <h3>Partnership Building</h3>
+                            <p>Connecting organizations and individuals to amplify our collective impact and reach.</p>
+                            <a href="#team" class="cta-button" onclick="showPage('team')">Meet Our Team</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="get-involved">
+                <div class="container">
+                    <h2>Ready to Make a Difference?</h2>
+                    <p class="section-intro">Join us in our mission to elevate communities and create lasting positive change. Every action matters.</p>
+                    <div class="involvement-options">
+                        <a href="#contact" class="cta-button" onclick="showPage('contact')">Volunteer</a>
+                        <a href="#contact" class="cta-button" onclick="showPage('contact')">Donate</a>
+                        <a href="#contact" class="cta-button" onclick="showPage('contact')">Partner</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page" style="display: none;">
+            <section class="hero-small">
+                <div class="hero-content">
+                    <h2>About ElevateGen</h2>
+                    <p>Discover our story, mission, and the impact we're making</p>
+                </div>
+            </section>
+            
+            <section class="about-content">
+                <div class="container">
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <h2>Our Story</h2>
+                            <p class="section-intro">Founded in 2020, ElevateGen emerged from a simple belief: every community has the potential to thrive when given the right tools, resources, and support.</p>
+                            <p>Our journey began when a group of passionate advocates recognized the growing need for sustainable, community-driven solutions to address social challenges. We saw that traditional approaches often fell short because they didn't truly engage the communities they aimed to serve.</p>
+                            <p>Today, ElevateGen has grown into a dynamic organization that partners with communities across the region, developing innovative programs that create lasting change from the ground up.</p>
+                            <p>We've helped establish community gardens, digital literacy programs, job training initiatives, and youth mentorship networks. Each project is designed with input from community members to ensure it addresses real needs and builds local capacity.</p>
+                        </div>
+                        <div class="about-image">
+                            <div class="image-placeholder">
+                                <h3>Community Impact</h3>
+                                <p>🌱 25+ Programs Launched</p>
+                                <p>🤝 500+ Volunteers Engaged</p>
+                                <p>🏘️ 15 Communities Served</p>
+                                <p>📈 1000+ Lives Impacted</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="values-section">
+                <div class="container">
+                    <h2>Our Core Values</h2>
+                    <div class="value-cards">
+                        <div class="value-card fade-in">
+                            <h3>🤝 Integrity</h3>
+                            <p>We operate with transparency, honesty, and accountability in all our endeavors.</p>
+                        </div>
+                        <div class="value-card fade-in">
+                            <h3>💡 Innovation</h3>
+                            <p>We embrace creative solutions and adapt to meet evolving community needs.</p>
+                        </div>
+                        <div class="value-card fade-in">
+                            <h3>🌍 Inclusion</h3>
+                            <p>We believe in the power of diverse voices and perspectives to drive meaningful change.</p>
+                        </div>
+                        <div class="value-card fade-in">
+                            <h3>📊 Impact</h3>
+                            <p>We measure our success by the positive, lasting change we create in communities.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Team Page -->
+        <div id="team-page" class="page" style="display: none;">
+            <section class="hero-small">
+                <div class="hero-content">
+                    <h2>Our Team</h2>
+                    <p>Meet the passionate individuals driving positive change</p>
+                </div>
+            </section>
+
+            <section class="team-content">
+                <div class="container">
+                    <div class="team-grid">
+                        <div class="team-member fade-in">
+                            <div class="member-photo">
+                                <div class="photo-placeholder">JS</div>
+                            </div>
+                            <h3>Jessica Smith</h3>
+                            <p class="role">Executive Director</p>
+                            <p>Jessica brings over 15 years of nonprofit leadership experience, focusing on community development and sustainable growth initiatives. She holds an MBA in Social Enterprise and is passionate about grassroots organizing.</p>
+                        </div>
+                        <div class="team-member fade-in">
+                            <div class="member-photo">
+                                <div class="photo-placeholder">MJ</div>
+                            </div>
+                            <h3>Michael Johnson</h3>
+                            <p class="role">Program Manager</p>
+                            <p>Michael specializes in program design and implementation, ensuring our initiatives create maximum community impact. His background in social work and project management helps bridge the gap between vision and execution.</p>
+                        </div>
+                        <div class="team-member fade-in">
+                            <div class="member-photo">
+                                <div class="photo-placeholder">SK</div>
+                            </div>
+                            <h3>Sarah Kim</h3>
+                            <p class="role">Community Outreach Coordinator</p>
+                            <p>Sarah builds bridges between ElevateGen and the communities we serve, fostering meaningful partnerships. Her multilingual abilities and cultural competency help us reach diverse populations.</p>
+                        </div>
+                        <div class="team-member fade-in">
+                            <div class="member-photo">
+                                <div class="photo-placeholder">DR</div>
+                            </div>
+                            <h3>David Rodriguez</h3>
+                            <p class="role">Development Director</p>
+                            <p>David leads our fundraising efforts and donor relations, ensuring sustainable resources for our mission. His experience in grant writing and corporate partnerships has secured over $2M in funding.</p>
+                        </div>
+                        <div class="team-member fade-in">
+                            <div class="member-photo">
+                                <div class="photo-placeholder">LC</div>
+                            </div>
+                            <h3>Lisa Chang</h3>
+                            <p class="role">Volunteer Coordinator</p>
+                            <p>Lisa manages our volunteer programs and creates meaningful opportunities for community engagement. She ensures volunteers feel valued and connected to our mission through ongoing support and training.</p>
+                        </div>
+                        <div class="team-member fade-in">
+                            <div class="member-photo">
+                                <div class="photo-placeholder">AT</div>
+                            </div>
+                            <h3>Alex Thompson</h3>
+                            <p class="role">Communications Specialist</p>
+                            <p>Alex handles our digital presence and storytelling, sharing the impact of our work with the world. Their expertise in social media strategy and content creation helps amplify community voices.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page" style="display: none;">
+            <section class="hero-small">
+                <div class="hero-content">
+                    <h2>Contact Us</h2>
+                    <p>Get in touch to learn more about our work and how you can get involved</p>
+                </div>
+            </section>
+
+            <section class="contact-content">
+                <div class="container">
+                    <div class="contact-grid">
+                        <div class="contact-info-section">
+                            <h2>Get In Touch</h2>
+                            <div class="contact-info">
+                                <div class="contact-item fade-in">
+                                    <h3>📍 Office Address</h3>
+                                    <p>123 Community Street<br>Atlanta, GA 30309</p>
+                                </div>
+                                <div class="contact-item fade-in">
+                                    <h3>📞 Phone</h3>
+                                    <p><a href="tel:+14045550123" style="color: #333; text-decoration: none;">(404) 555-0123</a></p>
+                                </div>
+                                <div class="contact-item fade-in">
+                                    <h3>✉️ Email</h3>
+                                    <p><a href="mailto:info@elevategen.org" style="color: #333; text-decoration: none;">info@elevategen.org</a></p>
+                                </div>
+                                <div class="contact-item fade-in">
+                                    <h3>🕒 Office Hours</h3>
+                                    <p>Monday - Friday: 9:00 AM - 5:00 PM<br>Saturday: 10:00 AM - 2:00 PM<br>Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form-section">
+                            <h2>Send Us a Message</h2>
+                            <div class="loading" id="loading">
+                                <div class="spinner"></div>
+                                <p>Sending your message...</p>
+                            </div>
+                            <form class="contact-form" id="contactForm">
+                                <div class="form-group">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="interest">I'm Interested In</label>
+                                    <select id="interest" name="interest">
+                                        <option value="">Select an option</option>
+                                        <option value="volunteering">Volunteering</option>
+                                        <option value="donating">Making a Donation</option>
+                                        <option value="partnership">Partnership Opportunities</option>
+                                        <option value="programs">Learning About Programs</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" name="subject">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message *</label>
+                                    <textarea id="message" name="message" rows="6" required placeholder="Tell us how you'd like to get involved or any questions you have..."></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn cta-button">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2025 ElevateGen. All rights reserved.</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Empowering communities, creating lasting change.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="LinkedIn">💼</a>
+                    <a href="mailto:info@elevategen.org" title="Email">✉️</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global variables
+        let currentPage = 'home';
+        const pages = {
+            'home': document.querySelector('#home-page'),
+            'about': document.querySelector('#about-page'),
+            'team': document.querySelector('#team-page'),
+            'contact': document.querySelector('#contact-page')
+        };
+
+        // Page navigation system
+        function showPage(pageName) {
+            if (!pages[pageName]) return;
+            
+            // Hide all pages
+            Object.keys(pages).forEach(key => {
+                if (pages[key]) {
+                    pages[key].style.display = 'none';
+                }
+            });
+            
+            // Show selected page
+            pages[pageName].style.display = 'block';
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            const activeLink = document.querySelector(`a[href="#${pageName}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            currentPage = pageName;
+            
+            // Close mobile menu if open
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Trigger fade-in animations for new page
+            setTimeout(() => {
+                const fadeElements = pages[pageName].querySelectorAll('.fade-in');
+                fadeElements.forEach((element, index) => {
+                    setTimeout(() => {
+                        element.classList.add('visible');
+                    }, index * 100);
+                });
+            }, 100);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Header background on scroll
+            let lastScrollY = window.scrollY;
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                const currentScrollY = window.scrollY;
+                
+                if (currentScrollY > 100) {
+                    header.style.background = 'rgba(0, 0, 0, 0.9)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.1)';
+                }
+                
+                // Hide/show header on scroll
+                if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollY = currentScrollY;
+            });
+
+            // Navigation event listeners
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.getAttribute('href').substring(1);
+                    showPage(page);
+                });
+            });
+
+            // Contact form handling
+            const contactForm = document.getElementById('contactForm');
+            const loading = document.getElementById('loading');
+            
+            if (contactForm && loading) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(contactForm);
+                    const name = formData.get('name');
+                    const email = formData.get('email');
+                    const message = formData.get('message');
+                    
+                    // Basic validation
+                    if (!name || !email || !message) {
+                        alert('Please fill in all required fields.');
+                        return;
+                    }
+                    
+                    // Email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Please enter a valid email address.');
+                        return;
+                    }
+                    
+                    // Show loading animation
+                    contactForm.style.display = 'none';
+                    loading.style.display = 'block';
+                    
+                    // Simulate form submission
+                    setTimeout(() => {
+                        loading.style.display = 'none';
+                        contactForm.style.display = 'block';
+                        
+                        // Success message
+                        const successDiv = document.createElement('div');
+                        successDiv.innerHTML = `
+                            <div style="background: linear-gradient(135deg, #10b981, #34d399); color: white; padding: 2rem; border-radius: 15px; text-align: center; margin-bottom: 2rem;">
+                                <h3 style="margin-bottom: 1rem;">✅ Message Sent Successfully!</h3>
+                                <p>Thank you for reaching out, ${name}! We'll get back to you within 24 hours.</p>
+                                <button onclick="this.parentElement.parentElement.remove()" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 0.5rem 1rem; border-radius: 5px; margin-top: 1rem; cursor: pointer;">Close</button>
+                            </div>
+                        `;
+                        contactForm.parentNode.insertBefore(successDiv, contactForm);
+                        
+                        // Reset form
+                        contactForm.reset();
+                    }, 2000);
+                });
+            }
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#') && href.length > 1) {
+                        const targetPage = href.substring(1);
+                        if (pages[targetPage]) {
+                            e.preventDefault();
+                            showPage(targetPage);
+                        }
+                    }
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.altKey) {
+                    switch(e.key) {
+                        case '1':
+                            e.preventDefault();
+                            showPage('home');
+                            break;
+                        case '2':
+                            e.preventDefault();
+                            showPage('about');
+                            break;
+                        case '3':
+                            e.preventDefault();
+                            showPage('team');
+                            break;
+                        case '4':
+                            e.preventDefault();
+                            showPage('contact');
+                            break;
+                    }
+                }
+            });
+
+            // Dynamic year in footer
+            const currentYear = new Date().getFullYear();
+            const footerText = document.querySelector('footer p');
+            if (footerText) {
+                footerText.innerHTML = footerText.innerHTML.replace('2025', currentYear);
+            }
+
+            // Add some interactive effects
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px) scale(1.05)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Project cards hover effect
+            document.querySelectorAll('.project-card, .value-card, .team-member').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add loading states for buttons
+            document.querySelectorAll('.cta-button:not(.submit-btn)').forEach(button => {
+                button.addEventListener('click', function() {
+                    const originalText = this.textContent;
+                    this.textContent = 'Loading...';
+                    this.style.opacity = '0.7';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.opacity = '1';
+                    }, 500);
+                });
+            });
+
+            // Initialize first page
+            showPage('home');
+            
+            // Add welcome animation
+            setTimeout(() => {
+                document.querySelectorAll('#home-page .fade-in').forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('visible');
+                    }, index * 200);
+                });
+            }, 500);
+
+            // Console welcome message
+            console.log(`
+🌟 Welcome to ElevateGen! 🌟
+Thanks for checking out our website.
+Interested in the code? We're always looking for volunteer developers!
+Email us at info@elevategen.org
+
+Keyboard shortcuts:
+- Alt + 1: Home
+- Alt + 2: About  
+- Alt + 3: Team
+- Alt + 4: Contact
+            `);
+        });
+
+        // Utility functions
+        function formatPhoneNumber(input) {
+            const value = input.value.replace(/\D/g, '');
+            const formattedValue = value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+            if (value.length <= 10) {
+                input.value = formattedValue;
+            }
+        }
+
+        // Add phone formatting
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneInput = document.getElementById('phone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function() {
+                    formatPhoneNumber(this);
+                });
+            }
+        });
+
+        // Add form validation styling
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.hasAttribute('required') && !this.value.trim()) {
+                        this.style.borderColor = '#ef4444';
+                        this.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
+                    } else {
+                        this.style.borderColor = 'rgba(59, 130, 246, 0.3)';
+                        this.style.boxShadow = 'none';
+                    }
+                });
+                
+                input.addEventListener('focus', function() {
+                    this.style.borderColor = '#3b82f6';
+                    this.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                });
+            });
+        });
+
+        // Add error handling for missing elements
+        window.addEventListener('error', function(e) {
+            console.warn('Non-critical error caught:', e.message);
+        });
+    </script>
+</body>
+</html>
