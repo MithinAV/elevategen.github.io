@@ -176,8 +176,7 @@
         .get-involved,
         .about-content,
         .team-content,
-        .contact-content,
-        .values-section {
+        .contact-content {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
         }
@@ -309,27 +308,26 @@
             justify-content: center;
         }
 
-        .value-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        .image-placeholder ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
         }
 
-        .value-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #333;
+        .image-placeholder ul li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 1.5rem;
         }
 
-        .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        .image-placeholder ul li:before {
+            content: "•";
+            color: #60a5fa;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
         }
 
         /* Team Page Styles */
@@ -583,8 +581,7 @@
                 font-size: 2rem;
             }
 
-            .mission-cards,
-            .value-cards {
+            .mission-cards {
                 grid-template-columns: 1fr;
             }
 
@@ -638,7 +635,6 @@
             }
 
             .project-card,
-            .value-card,
             .team-member {
                 padding: 1.5rem;
             }
@@ -729,35 +725,12 @@
                         <div class="about-image">
                             <div class="image-placeholder">
                                 <h3>Community Impact</h3>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
+                                <ul>
+                                    <li>Kickoff meeting drew strong student turnout</li>
+                                    <li>Built connections with impactful mentors</li>
+                                    <li>Supported students in landing internships</li>
+                                </ul>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="values-section">
-                <div class="container">
-                    <h2>Our Core Values</h2>
-                    <div class="value-cards">
-                        <div class="value-card fade-in">
-                            <h3>1</h3>
-                            <p>core val 1</p>
-                        </div>
-                        <div class="value-card fade-in">
-                            <h3>2 </h3>
-                            <p> core val 2</p>
-                        </div>
-                        <div class="value-card fade-in">
-                            <h3> 3 </h3>
-                            <p>core val 3</p>
-                        </div>
-                        <div class="value-card fade-in">
-                            <h3>4 </h3>
-                            <p>core val 4.</p>
                         </div>
                     </div>
                 </div>
@@ -1173,7 +1146,7 @@
             });
 
             // Project cards hover effect
-            document.querySelectorAll('.project-card, .value-card, .team-member').forEach(card => {
+            document.querySelectorAll('.project-card, .team-member').forEach(card => {
                 card.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-15px) scale(1.02)';
                 });
@@ -1270,3 +1243,4 @@ Keyboard shortcuts:
         });
     </script>
 </body>
+</html>
