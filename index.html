@@ -197,6 +197,44 @@
             color: #1e40af;
         }
 
+        /* Team Showcase Styles */
+        .team-showcase {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .team-showcase-content {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .team-showcase-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            min-height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .team-showcase-image:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .showcase-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         /* Mission Cards */
         .mission-cards {
             display: grid;
@@ -214,6 +252,9 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .project-card:hover {
@@ -230,6 +271,7 @@
         .project-card p {
             margin-bottom: 1.5rem;
             color: rgba(255, 255, 255, 0.8);
+            flex-grow: 1;
         }
 
         /* Get Involved Section */
@@ -569,6 +611,17 @@
             .cta-button {
                 margin: 0.5rem;
             }
+
+            .team-showcase-image {
+                max-width: 100%;
+                min-height: 200px;
+            }
+
+            .showcase-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -629,21 +682,13 @@
                     <h2>Our Mission</h2>
                     <p class="section-intro">We're here to help students explore careers, build real experience, and grow with confidence. Through hands-on opportunities like internships, mentorships, and workshops, our goal is to make the future feel less overwhelming, and more achievable.
                     </p>
-                    <div class="mission-cards">
-                        <div class="project-card fade-in">
-                            <h3>Community Empowerment</h3>
-                            <p>Building stronger communities through education, resources, and support systems that create lasting change.</p>
-                            <a href="#about" class="cta-button" onclick="showPage('about')">Learn More</a>
-                        </div>
-                        <div class="project-card fade-in">
-                            <h3>Sustainable Solutions</h3>
-                            <p>Developing long-term strategies that create lasting positive impact for generations to come.</p>
-                            <a href="#about" class="cta-button" onclick="showPage('about')">Learn More</a>
-                        </div>
-                        <div class="project-card fade-in">
-                            <h3>Partnership Building</h3>
-                            <p>Connecting organizations and individuals to amplify our collective impact and reach.</p>
-                            <a href="#team" class="cta-button" onclick="showPage('team')">Meet Our Team</a>
+                    <div class="team-showcase">
+                        <div class="team-showcase-content fade-in">
+                            <img src="images/Team.jpg" alt="ElevateGen Team" class="team-showcase-image">
+                            <div class="showcase-buttons">
+                                <a href="#about" class="cta-button" onclick="showPage('about')">Learn More</a>
+                                <a href="#team" class="cta-button" onclick="showPage('team')">Meet Our Team</a>
+                            </div>
                         </div>
                     </div>
                 </div>
